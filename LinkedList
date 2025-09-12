@@ -10,7 +10,7 @@ public:
         while (temp1 != NULL || temp2 != NULL) {
             int sum = carry;
             if (temp1) sum += temp1->val;   
-                   if (temp2) sum += temp2->val;  // ✅ changed data → val
+                   if (temp2) sum += temp2->val;  
             ListNode* nn = new ListNode(sum % 10)
             carry = sum / 10;
             curr->next = nn;
