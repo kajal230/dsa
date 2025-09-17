@@ -1,0 +1,29 @@
+class Solution {
+public:
+ListNode* findnthnode(ListNode* temp,int k){
+    int cnt=1;
+    while(temp!=nullptr){
+        if(cnt==k)return temp;
+        cnt++;
+        temp=temp->next;
+    }
+    return temp;
+}
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head==nullptr || k==0)return head;
+        ListNode* temp=head;
+        int len=1;
+        while(temp!=nullptr && temp->next!=nullptr){
+            temp=temp->next;
+            len++;
+        }
+        if(k%len==0)return head;
+        k=k%len;
+        temp->next=head;
+        ListNode* newlastnode=findnthnode(head, len-k);
+         head=newlastnode->next;
+         newlastnode->next=nullptr;
+         return head;
+
+    }
+};
